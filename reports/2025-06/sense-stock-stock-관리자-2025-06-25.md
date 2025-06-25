@@ -1,74 +1,87 @@
-## 📊 *`Stock-관리자`* 님 맞춤 투자 분석
-
-### 🎯 **핵심 분석**
-> **투자 성향**: 분석형  
-> **분석 요청**: 이스라엘 이란 전쟁이 휴전이 됐어  
-> **현재 시장 상황**: 
-> - VIX 지수: 18.5 (전일 대비 -1.2%)
-> - 시장 심리: 중립
-> - 주요 변화: 최근 이란과 이스라엘 휴전 관련 뉴스로 인해 중동 정치 불확실성이 감소하고 있으며, 이에 따라 여러 산업의 수급 요인이 변화하고 있습니다.
-
----
-
-### 📈 **시장 상황 분석**
-현재 중동 지역의 정세가 개선됨에 따라, 이란과 이스라엘 관련 산업의 주가가 상승세를 보이고 있습니다. 특히 에너지 및 방위 산업은 직간접적으로 긍정적인 영향을 받고 있습니다. 
-
-**주요 지표**
-- **VIX 지수**: 18.5 (전일 대비 -1.2%)  
-  - 이는 시장의 변동성 감소를 의미하며, 전반적인 안정감을 나타냅니다.
-- **시장 심리**: 중립  
-  - 투자자들은 상황을 면밀히 지켜보며 흐름을 살피고 있습니다.
-- **주요 변화**: 
-  - 이란과 이스라엘 간의 갈등 해결로 인해 석유 및 방산 주식의 투자 심리가 개선되고 있습니다. 
-  - 글로벌 경제에도 긍정적인 영향이 기대되며, 특히 에너지 공급망의 안정성이 더욱 강조되고 있습니다.
-
----
-
-### 🎯 ***`Stock-관리자`*님 맞춤 시나리오**
-
-#### 🟢 **낙관 시나리오** (확률: 60%)
-- **상황**: 이란과 이스라엘 간의 휴전 지속, 정치적 안정성이 글로벌 경제에 긍정적 기여
-- ***`Stock-관리자`* 님 전략**: 이를 바탕으로 에너지 및 방위 관련 주식에 대한 투자 확대
-- **예상 결과**: 해당 산업의 주가 상승과 더불어, 중동 지역의 정치적 안정성이 지속되면 경제 성장률이 개선될 것입니다.
-
-#### 🟡 **중립 시나리오** (확률: 30%)
-- **상황**: 정세가 안정적이나 외부 요인으로 인해 고비가 옵니다. 
-- ***`Stock-관리자`* 님 전략**: 현재 포트폴리오 점검 및 방산 및 에너지 섹터에 대한 다각적 접근
-- **예상 결과**: 약세장 전환 시에도 위험 관리를 통해 자산 가치 방어 가능.
-
-#### 🔴 **비관 시나리오** (확률: 10%)
-- **상황**: 예기치 않은 정치적 갈등 재발, 경제 충격 검토
-- ***`Stock-관리자`* 님 전략**: 포트폴리오 방어 전략 강화와 함께 현금 비중 확대
-- **예상 결과**: 시장 안정성이 이탈할 경우 손실 방지 및 리스크 최소화 목표.
-
----
-
-### ⚡ **즉시 실행 가이드**
-
-#### 📋 **오늘 할 일**
-1. 현재 포트폴리오의 리스크 분석 및 리밸런싱 필요
-2. 중동 정세 변동 관련 뉴스 업데이트 지속적으로 확인
-3. 에너지 및 방위 관련 주식의 움직임을 주의 깊게 관찰
-
-#### 👀 **모니터링 포인트**
-- **핵심 지표**: 유가, 금리, 중동 정치 뉴스
-- **결정 시점**: 특정 지표(예: 유가 상승 3% 이내의 변화 시) 발생 시 대응
-- **위험 신호**: 불확실성이 증가하는 외부 요인 발생 시
-
----
-
-### 💡 ***`Stock-관리자`* 님 성향별 고려사항**
-
-**✅ 활용 포인트**
-- 중기적으로 특정 산업의 투자 결정을 고려하고 계시며, 이를 기반으로 방위 및 에너지 산업에 집중하는 것이 유리할 수 있습니다.
-
-**⚠️ 주의사항**
-- 다른 국가 시장보다 이란 및 이스라엘의 영향을 중요하게 생각하지 않으시므로, 글로벌 경향에도 주의해야 합니다. 
-
-**🎯 추천사항**
-- 범세계적으로 에너지 공급에 대한 관심이 증가하고 있으므로, 이를 기반으로 전략을 재점검할 필요가 있습니다.
-
----
-
-*분석 시점: 2025. 06. 25. 오전 11:37:49*  
-*투자 고지: 모든 투자에는 원금 손실 위험이 존재합니다.*
+IyMg8J+TiiAqYFN0b2NrLeq0gOumrOyekGAqIOuLmCDrp57stqQg7Yis7J6Q
+IOu2hOyEnQoKIyMjIPCfjq8gKirtlbXsi6wg67aE7ISdKioKPiAqKu2IrOye
+kCDshLHtlqUqKjog67aE7ISd7ZiVICAKPiAqKuu2hOyEnSDsmpTssq0qKjog
+7J207Iqk65287JeYIOydtOuegCDsoITsn4HsnbQg7Zy07KCE7J20IOuQkOyW
+tCAgCj4gKirtmITsnqwg7Iuc7J6lIOyDge2ZqSoqOiAKPiAtIFZJWCDsp4Ds
+iJg6IDE4LjUgKOyghOydvCDrjIDruYQgLTEuMiUpCj4gLSDsi5zsnqUg7Ius
+66asOiDspJHrpr0KPiAtIOyjvOyalCDrs4DtmZQ6IOy1nOq3vCDsnbTrnoDq
+s7wg7J207Iqk65287JeYIO2ctOyghCDqtIDroKgg64m07Iqk66GcIOyduO2V
+tCDspJHrj5kg7KCV7LmYIOu2iO2ZleyLpOyEseydtCDqsJDshoztlZjqs6Ag
+7J6I7Jy866mwLCDsnbTsl5Ag65Sw6528IOyXrOufrCDsgrDsl4XsnZgg7IiY
+6riJIOyalOyduOydtCDrs4DtmZTtlZjqs6Ag7J6I7Iq164uI64ukLgoKLS0t
+CgojIyMg8J+TiCAqKuyLnOyepSDsg4Htmakg67aE7ISdKioK7ZiE7J6sIOyk
+keuPmSDsp4Dsl63snZgg7KCV7IS46rCAIOqwnOyEoOuQqOyXkCDrlLDrnbws
+IOydtOuegOqzvCDsnbTsiqTrnbzsl5gg6rSA66CoIOyCsOyXheydmCDso7zq
+sIDqsIAg7IOB7Iq57IS466W8IOuztOydtOqzoCDsnojsirXri4jri6QuIO2K
+ue2eiCDsl5DrhIjsp4Ag67CPIOuwqeychCDsgrDsl4XsnYAg7KeB6rCE7KCR
+7KCB7Jy866GcIOq4jeygleyggeyduCDsmIHtlqXsnYQg67Cb6rOgIOyeiOyK
+teuLiOuLpC4gCgoqKuyjvOyalCDsp4DtkZwqKgotICoqVklYIOyngOyImCoq
+OiAxOC41ICjsoITsnbwg64yA67mEIC0xLjIlKSAgCiAgLSDsnbTripQg7Iuc
+7J6l7J2YIOuzgOuPmeyEsSDqsJDshozrpbwg7J2Y66+47ZWY66mwLCDsoITr
+sJjsoIHsnbgg7JWI7KCV6rCQ7J2EIOuCmO2DgOuDheuLiOuLpC4KLSAqKuyL
+nOyepSDsi6zrpqwqKjog7KSR66a9ICAKICAtIO2IrOyekOyekOuTpOydgCDs
+g4HtmansnYQg66m067CA7Z6IIOyngOy8nOuztOupsCDtnZDrpoTsnYQg7IK0
+7ZS86rOgIOyeiOyKteuLiOuLpC4KLSAqKuyjvOyalCDrs4DtmZQqKjogCiAg
+LSDsnbTrnoDqs7wg7J207Iqk65287JeYIOqwhOydmCDqsIjrk7Eg7ZW06rKw
+66GcIOyduO2VtCDshJ3snKAg67CPIOuwqeyCsCDso7zsi53snZgg7Yis7J6Q
+IOyLrOumrOqwgCDqsJzshKDrkJjqs6Ag7J6I7Iq164uI64ukLiAKICAtIOq4
+gOuhnOuyjCDqsr3soJzsl5Drj4Qg6riN7KCV7KCB7J24IOyYge2WpeydtCDq
+uLDrjIDrkJjrqbAsIO2Kue2eiCDsl5DrhIjsp4Ag6rO16riJ66ed7J2YIOyV
+iOygleyEseydtCDrjZTsmrEg6rCV7KGw65CY6rOgIOyeiOyKteuLiOuLpC4K
+Ci0tLQoKIyMjIPCfjq8gKioqYFN0b2NrLeq0gOumrOyekGAq64uYIOunnuy2
+pCDsi5zrgpjrpqzsmKQqKgoKIyMjIyDwn5+iICoq64KZ6rSAIOyLnOuCmOum
+rOyYpCoqICjtmZXrpaA6IDYwJSkKLSAqKuyDge2ZqSoqOiDsnbTrnoDqs7wg
+7J207Iqk65287JeYIOqwhOydmCDtnLTsoIQg7KeA7IaNLCDsoJXsuZjsoIEg
+7JWI7KCV7ISx7J20IOq4gOuhnOuyjCDqsr3soJzsl5Ag6riN7KCV7KCBIOq4
+sOyXrAotICoqKmBTdG9jay3qtIDrpqzsnpBgKiDri5gg7KCE6561Kio6IOyd
+tOulvCDrsJTtg5XsnLzroZwg7JeQ64SI7KeAIOuwjyDrsKnsnIQg6rSA66Co
+IOyjvOyLneyXkCDrjIDtlZwg7Yis7J6QIO2ZleuMgAotICoq7JiI7IOBIOqy
+sOqzvCoqOiDtlbTri7kg7IKw7JeF7J2YIOyjvOqwgCDsg4Hsirnqs7wg642U
+67aI7Ja0LCDspJHrj5kg7KeA7Jet7J2YIOygley5mOyggSDslYjsoJXshLHs
+nbQg7KeA7IaN65CY66m0IOqyveygnCDshLHsnqXrpaDsnbQg6rCc7ISg65Cg
+IOqyg+yeheuLiOuLpC4KCiMjIyMg8J+foSAqKuykkeumvSDsi5zrgpjrpqzs
+mKQqKiAo7ZmV66WgOiAzMCUpCi0gKirsg4HtmakqKjog7KCV7IS46rCAIOyV
+iOygleyggeydtOuCmCDsmbjrtoAg7JqU7J247Jy866GcIOyduO2VtCDqs6Dr
+uYTqsIAg7Ji164uI64ukLiAKLSAqKipgU3RvY2st6rSA66as7J6QYCog64uY
+IOyghOuetSoqOiDtmITsnqwg7Y+s7Yq47Y+066as7JikIOygkOqygCDrsI8g
+67Cp7IKwIOuwjyDsl5DrhIjsp4Ag7IS57YSw7JeQIOuMgO2VnCDri6TqsIHs
+oIEg7KCR6re8Ci0gKirsmIjsg4Eg6rKw6rO8Kio6IOyVveyEuOyepSDsoITt
+mZgg7Iuc7JeQ64+EIOychO2XmCDqtIDrpqzrpbwg7Ya17ZW0IOyekOyCsCDq
+sIDsuZgg67Cp7Ja0IOqwgOuKpS4KCiMjIyMg8J+UtCAqKuu5hOq0gCDsi5zr
+gpjrpqzsmKQqKiAo7ZmV66WgOiAxMCUpCi0gKirsg4HtmakqKjog7JiI6riw
+7LmYIOyViuydgCDsoJXsuZjsoIEg6rCI65OxIOyerOuwnCwg6rK97KCcIOy2
+qeqyqSDqsoDthqAKLSAqKipgU3RvY2st6rSA66as7J6QYCog64uYIOyghOue
+tSoqOiDtj6ztirjtj7TrpqzsmKQg67Cp7Ja0IOyghOuetSDqsJXtmZTsmYAg
+7ZWo6ruYIO2YhOq4iCDruYTspJEg7ZmV64yACi0gKirsmIjsg4Eg6rKw6rO8
+Kio6IOyLnOyepSDslYjsoJXshLHsnbQg7J207YOI7ZWgIOqyveyasCDshpDs
+i6Qg67Cp7KeAIOuwjyDrpqzsiqTtgawg7LWc7IaM7ZmUIOuqqe2RnC4KCi0t
+LQoKIyMjIOKaoSAqKuymieyLnCDsi6Ttlokg6rCA7J2065OcKioKCiMjIyMg
+8J+TiyAqKuyYpOuKmCDtlaAg7J28KioKMS4g7ZiE7J6sIO2PrO2KuO2PtOum
+rOyYpOydmCDrpqzsiqTtgawg67aE7ISdIOuwjyDrpqzrsLjrn7Dsi7Eg7ZWE
+7JqUCjIuIOykkeuPmSDsoJXshLgg67OA64+ZIOq0gOugqCDribTsiqQg7JeF
+642w7J207Yq4IOyngOyGjeyggeycvOuhnCDtmZXsnbgKMy4g7JeQ64SI7KeA
+IOuwjyDrsKnsnIQg6rSA66CoIOyjvOyLneydmCDsm4Dsp4HsnoTsnYQg7KO8
+7J2YIOq5iuqyjCDqtIDssLAKCiMjIyMg8J+RgCAqKuuqqOuLiO2EsOungSDt
+j6zsnbjtirgqKgotICoq7ZW17IusIOyngO2RnCoqOiDsnKDqsIAsIOq4iOum
+rCwg7KSR64+ZIOygley5mCDribTsiqQKLSAqKuqysOyglSDsi5zsoJAqKjog
+7Yq57KCVIOyngO2RnCjsmIg6IOycoOqwgCDsg4HsirkgMyUg7J2064K07J2Y
+IOuzgO2ZlCDsi5wpIOuwnOyDnSDsi5wg64yA7J2RCi0gKirsnITtl5gg7Iug
+7Zi4Kio6IOu2iO2ZleyLpOyEseydtCDspp3qsIDtlZjripQg7Jm467aAIOya
+lOyduCDrsJzsg50g7IucCgotLS0KCiMjIyDwn5KhICoqKmBTdG9jay3qtIDr
+pqzsnpBgKiDri5gg7ISx7Zal67OEIOqzoOugpOyCrO2VrSoqCgoqKuKchSDt
+mZzsmqkg7Y+s7J247Yq4KioKLSDspJHquLDsoIHsnLzroZwg7Yq57KCVIOyC
+sOyXheydmCDtiKzsnpAg6rKw7KCV7J2EIOqzoOugpO2VmOqzoCDqs4Tsi5zr
+qbAsIOydtOulvCDquLDrsJjsnLzroZwg67Cp7JyEIOuwjyDsl5DrhIjsp4Ag
+7IKw7JeF7JeQIOynkeykke2VmOuKlCDqsoPsnbQg7Jyg66as7ZWgIOyImCDs
+nojsirXri4jri6QuCgoqKuKaoO+4jyDso7zsnZjsgqztla0qKgotIOuLpOul
+uCDqta3qsIAg7Iuc7J6l67O064ukIOydtOuegCDrsI8g7J207Iqk65287JeY
+7J2YIOyYge2WpeydhCDspJHsmpTtlZjqsowg7IOd6rCB7ZWY7KeAIOyViuyc
+vOyLnOuvgOuhnCwg6riA66Gc67KMIOqyve2WpeyXkOuPhCDso7zsnZjtlbTs
+lbwg7ZWp64uI64ukLiAKCioq8J+OryDstpTsspzsgqztla0qKgotIOuylOyE
+uOqzhOyggeycvOuhnCDsl5DrhIjsp4Ag6rO16riJ7JeQIOuMgO2VnCDqtIDs
+i6zsnbQg7Kad6rCA7ZWY6rOgIOyeiOycvOuvgOuhnCwg7J2066W8IOq4sOuw
+mOycvOuhnCDsoITrnrXsnYQg7J6s7KCQ6rKA7ZWgIO2VhOyalOqwgCDsnojs
+irXri4jri6QuCgotLS0KCirrtoTshJ0g7Iuc7KCQOiAyMDI1LiAwNi4gMjUu
+IOyYpOyghCAxMTozNzo0OSogIAoq7Yis7J6QIOqzoOyngDog66qo65OgIO2I
+rOyekOyXkOuKlCDsm5DquIgg7IaQ7IukIOychO2XmOydtCDsobTsnqztlanr
+i4jri6QuKg==
