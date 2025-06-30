@@ -39,7 +39,7 @@
 
 ### 🧠 관련 프로젝트
 
-👉 [프로젝트 블로그]([https://cord-ai.tistory.com/category/n8n%2C%20Automation%20Tool/n8n%20Project)])
+👉 [프로젝트 블로그](https://cord-ai.tistory.com/category/n8n%2C%20Automation%20Tool/n8n%20Project)
 
 ---
 
