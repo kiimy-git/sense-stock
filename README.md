@@ -1,91 +1,52 @@
-# Repository Quick Start template
-## Index
-  - [Overview](#overview) 
-  - [Getting Started](#getting-started)
-  - [Contributing](#contributing)
-  - [Authors](#authors)
-  - [License](#license)
-<!--  Other options to write Readme
-  - [Deployment](#deployment)
-  - [Used or Referenced Projects](Used-or-Referenced-Projects)
--->
-## About RepositoryTemplate
-<!--Wirte one paragraph of project description -->  
-This project's purpose is to create a make Repository with a collection of default settings  
+## 📊 Sense Stock Data Repository
 
-## Overview
-<!-- Write Overview about this project -->
-**If you use this template, you can use this function**
-- Issue Template
-- Pull Request Template
-- Commit Template
-- Readme Template
-- Contribute Template
-- Pull Request Build Test(With Github Actions)
+이 저장소는 **Sense Stock** 프로젝트에서 수집 및 생성한 데이터를 저장하고 관리하는 공간입니다. 
+프로젝트 목적은 주식 관련 뉴스와 시장 흐름을 자동 분석하여 투자 인사이트를 제공하는 것입니다.
 
-## Getting Started
-**click `Use this template` and use this template!**
-<!--
-### Depencies
- Write about need to install the software and how to install them 
--->
-### Installing
-<!-- A step by step series of examples that tell you how to get a development 
-env running
+---
 
-Say what the step will be
-
-    Give the example
-
-And repeat
-
-    until finished
--->
-1. Click `Use this template` button 
-2. Create New Repository
-3. Update Readme and Others(Other features are noted in comments.)
-<!--
-## Deployment
- Add additional notes about how to deploy this on a live system
- -->
-## Contributing
-<!-- Write the way to contribute -->
-I am looking for someone to help with this project. Please advise and point out.  
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code
-of conduct, and the process for submitting pull requests to us.
-
-## Authors
-  - [Always0ne](https://github.com/Always0ne) - **SangIl Hwang** - <si8363@soongsil.ac.kr>
-
-See also the list of [contributors](https://github.com/always0ne/readmeTemplate/contributors)
-who participated in this project.
-<!--
-## Used or Referenced Projects
- - [referenced Project](project link) - **LICENSE** - little-bit introduce
--->
-
-## License
+### 📁 폴더 구조
 
 ```
-MIT License
-
-Copyright (c) 2020 always0ne
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+├── heatmap/
+│   └── 2025-05/         # 2025년 5월 S&P500 히트맵 이미지 (Finviz 기반, 일 단위 수집)
+│
+├── holidays/            # 미국 공휴일 정보 저장, ex)2025.json (연 단위 자동 갱신)
+│
+├── reports/
+│   └── 2025-06/         # 사용자 질문에 따른 자동 뉴스 분석 리포트 (요청 시 생성)
 ```
+
+---
+
+### 📌 사용 목적
+
+- **`heatmap/`**: [Finviz](https://finviz.com/map.ashx)에서 S&P 500 히트맵 이미지를 수집하여 저장. 시장 참여자의 관심 흐름을 시각적으로 추적.
+- **`holidays/`**: 미국 증시 공휴일 데이터를 저장하여 비거래일 예측 및 일정 기반 분석에 활용.
+- **`reports/`**: 사용자의 질문에 기반한 GPT 자동화 분석 결과를 저장하는 리포트 공간.
+
+---
+
+### 🗓️ 업데이트 주기
+
+| 폴더명     | 업데이트 주기  |
+|------------|-----------------|
+| heatmap    | 매일 자동 수집  |
+| holidays   | 연 1회 자동 갱신|
+| reports    | 요청 시 생성    |
+
+---
+
+### 🧠 관련 프로젝트
+
+👉 [프로젝트 블로그]([https://cord-ai.tistory.com/](https://cord-ai.tistory.com/category/n8n%2C%20Automation%20Tool/n8n%20Project))
+
+---
+
+### 🔒 기타 참고사항
+
+- 이 저장소는 데이터 백업 및 관리 목적으로 사용됩니다.
+- 일부 데이터는 수동으로 보완될 수 있습니다.
+- 리포트 폴더 내 결과물은 모두 사용자 질문 기반입니다.
+
+---
