@@ -1,19 +1,46 @@
-WwogIHsKICAgICJkYXRlIjogIjIwMjUtMDEtMDEiLAogICAgImV2ZW50Ijog
-Iijrr7jqta0pIE5ldyBZZWFycyBEYXkiCiAgfSwKICB7CiAgICAiZGF0ZSI6
-ICIyMDI1LTAxLTA5IiwKICAgICJldmVudCI6ICIo66+46rWtKSBIb2xpZGF5
-IgogIH0sCiAgewogICAgImRhdGUiOiAiMjAyNS0wMS0yMCIsCiAgICAiZXZl
-bnQiOiAiKOuvuOq1rSkgTWFydGluIEx1dGhlciBLaW5nLCBKci4gRGF5Igog
-IH0sCiAgewogICAgImRhdGUiOiAiMjAyNS0wMi0xNyIsCiAgICAiZXZlbnQi
-OiAiKOuvuOq1rSkgV2FzaGluZ3RvbidzIEJpcnRoZGF5IgogIH0sCiAgewog
-ICAgImRhdGUiOiAiMjAyNS0wNC0xOCIsCiAgICAiZXZlbnQiOiAiKOuvuOq1
-rSkgR29vZCBGcmlkYXkiCiAgfSwKICB7CiAgICAiZGF0ZSI6ICIyMDI1LTA1
-LTI2IiwKICAgICJldmVudCI6ICIo66+46rWtKSBNZW1vcmlhbCBEYXkiCiAg
-fSwKICB7CiAgICAiZGF0ZSI6ICIyMDI1LTA2LTE5IiwKICAgICJldmVudCI6
-ICIo66+46rWtKSBKdW5ldGVlbnRoIE5hdGlvbmFsIEluZGVwZW5kZW5jZSBE
-YXkiCiAgfSwKICB7CiAgICAiZGF0ZSI6ICIyMDI1LTA3LTA0IiwKICAgICJl
-dmVudCI6ICIo66+46rWtKSBJbmRlcGVuZGVuY2UgRGF5IgogIH0sCiAgewog
-ICAgImRhdGUiOiAiMjAyNS0wOS0wMSIsCiAgICAiZXZlbnQiOiAiKOuvuOq1
-rSkgTGFib3IgRGF5IgogIH0sCiAgewogICAgImRhdGUiOiAiMjAyNS0xMS0y
-NyIsCiAgICAiZXZlbnQiOiAiKOuvuOq1rSkgVGhhbmtzZ2l2aW5nIERheSIK
-ICB9LAogIHsKICAgICJkYXRlIjogIjIwMjUtMTItMjUiLAogICAgImV2ZW50
-IjogIijrr7jqta0pIENocmlzdG1hcyBEYXkiCiAgfQpd
+[
+  {
+    "date": "2025-01-01",
+    "event": "(미국) New Years Day"
+  },
+  {
+    "date": "2025-01-09",
+    "event": "(미국) Holiday"
+  },
+  {
+    "date": "2025-01-20",
+    "event": "(미국) Martin Luther King, Jr. Day"
+  },
+  {
+    "date": "2025-02-17",
+    "event": "(미국) Washington's Birthday"
+  },
+  {
+    "date": "2025-04-18",
+    "event": "(미국) Good Friday"
+  },
+  {
+    "date": "2025-05-26",
+    "event": "(미국) Memorial Day"
+  },
+  {
+    "date": "2025-06-19",
+    "event": "(미국) Juneteenth National Independence Day"
+  },
+  {
+    "date": "2025-07-04",
+    "event": "(미국) Independence Day"
+  },
+  {
+    "date": "2025-09-01",
+    "event": "(미국) Labor Day"
+  },
+  {
+    "date": "2025-11-27",
+    "event": "(미국) Thanksgiving Day"
+  },
+  {
+    "date": "2025-12-25",
+    "event": "(미국) Christmas Day"
+  }
+]
