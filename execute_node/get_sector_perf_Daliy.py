@@ -1,6 +1,7 @@
 import asyncio
 from playwright.async_api import async_playwright
 from bs4 import BeautifulSoup
+import json
 
 async def main():
     async with async_playwright() as p:
@@ -46,5 +47,4 @@ async def main():
 
 if __name__ == "__main__":
     result = asyncio.run(main())
-    for d in result:
-        print(d)
+    print(json.dumps(result, indent=2))

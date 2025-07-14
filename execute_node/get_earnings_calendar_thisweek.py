@@ -38,7 +38,7 @@ async def scroll_until_done(page, pause_time=1200, max_scrolls=60, stable_thresh
         row_count = await page.evaluate("""
             () => document.querySelectorAll('#earningsCalendarData tbody tr').length
         """)
-        print(f"[{i+1}] Row count: {row_count}")
+        # print(f"[{i+1}] Row count: {row_count}")
 
         if row_count == prev_count:
             stable_rounds += 1
@@ -46,7 +46,7 @@ async def scroll_until_done(page, pause_time=1200, max_scrolls=60, stable_thresh
             stable_rounds = 0
 
         if stable_rounds >= stable_threshold:
-            print("✅ 더 이상 로딩되는 항목 없음. 스크롤 종료.")
+            # print("✅ 더 이상 로딩되는 항목 없음. 스크롤 종료.")
             break
 
         prev_count = row_count

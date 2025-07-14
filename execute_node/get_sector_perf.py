@@ -1,6 +1,7 @@
 import asyncio
 from playwright.async_api import async_playwright
 from bs4 import BeautifulSoup
+import json
 
 async def extract_sector_data():
     async with async_playwright() as p:
@@ -38,5 +39,4 @@ async def extract_sector_data():
 # asyncio.run(extract_sector_data())
 if __name__ == "__main__":
     result = asyncio.run(extract_sector_data())
-    for r in result:
-        print(r)
+    print(json.dumps(result, indent=2))
