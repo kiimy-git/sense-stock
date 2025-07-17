@@ -25,6 +25,7 @@
 ### 📌 사용 목적
 
 - **`heatmap/`**: [Finviz](https://finviz.com/map.ashx)에서 S&P 500 히트맵 이미지를 수집하여 저장. 시장 참여자의 관심 흐름을 시각적으로 추적.
+- **`execute_node/`**: [Finviz](https://finviz.com/map.ashx) 및 [Investing.com](https://kr.investing.com/)에서 경제/실적/S&P500 Data 추출 Code(Playwright)
 - **`holidays/`**: 미국 증시 공휴일 데이터를 저장하여 비거래일 예측 및 일정 기반 분석에 활용.
 - **`reports/`**: 사용자의 질문에 기반한 GPT 자동화 분석 결과를 저장하는 리포트 공간.
 
