@@ -69,7 +69,7 @@ async def scrape_us_events():
         context = await browser.new_context(user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36")
         page = await context.new_page()
 
-        await page.goto("https://kr.investing.com/earnings-calendar/", wait_until="domcontentloaded")
+        await page.goto("https://investing.com/earnings-calendar/", wait_until="domcontentloaded")
         await page.wait_for_selector("#timeFrame_nextWeek", timeout=5000)
 
         # 🔄 '이번 주' 버튼 클릭"
@@ -86,7 +86,7 @@ async def scrape_us_events():
     table = soup.find("table", id="earningsCalendarData")
 
     # 항목은 고정이니까 수동으로 기입
-    headers = ["회사", "주당순이익", "주당순이익_예측", "매출", "매출_예축", "총 시가"]
+    headers = ["회사", "주당순이익(EPS)", "주당순이익_예측", "매출(Revenue)", "매출_예축", "총 시가"]
     result_by_date = defaultdict(list)
     current_date = None
 
