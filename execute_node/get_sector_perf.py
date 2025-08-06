@@ -24,13 +24,17 @@ async def extract_sector_data():
         return
 
     headers = [th.get_text(strip=True) for th in table.select("thead th")]
+    headers = ['섹터명' if h == 'Name' else h for h in headers]
     # print("✅ 추출된 헤더:", headers)
 
     data = []
+    # 제외하고 싶은 컬럼 목록 정의
+    excluded_headers = ['No.', 'Change']
+
     for row in table.select("tbody tr"):
         cols = row.select("td")
         values = [col.get_text(strip=True) for col in cols]
-        record = dict(zip(headers, values))
+        record = {h: v for h, v in zip(headers, values) if h not in excluded_headers}
         data.append(record)
     # print(data)
     return data

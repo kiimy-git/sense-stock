@@ -9,7 +9,7 @@ async def sp500_price():
         context = await browser.new_context(user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36")
         page = await context.new_page()
 
-        await page.goto("https://kr.investing.com/equities/americas", wait_until="domcontentloaded")
+        await page.goto("https://investing.com/equities/americas", wait_until="domcontentloaded")
         await page.wait_for_selector("div#index-select", timeout=15000)
         
         # 2️⃣ 지수 드롭다운 열기

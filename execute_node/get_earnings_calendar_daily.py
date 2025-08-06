@@ -1,9 +1,29 @@
 import asyncio
-from playwright.async_api import async_playwright
+from playwright.async_api import async_playwright, TimeoutError
 from bs4 import BeautifulSoup
 import json
 from collections import defaultdict
 import re
+from datetime import datetime
+
+weekday_kr = {
+    'Monday': '월요일',
+    'Tuesday': '화요일',
+    'Wednesday': '수요일',
+    'Thursday': '목요일',
+    'Friday': '금요일',
+    'Saturday': '토요일',
+    'Sunday': '일요일',
+}
+
+def convert_to_korean_date(date_str):
+    """
+    'Monday, July 21, 2025' → '2025년 7월 21일 월요일'
+    """
+    dt = datetime.strptime(date_str, "%A, %B %d, %Y")
+    weekday = weekday_kr[dt.strftime("%A")]
+    return f"{dt.year}년 {dt.month}월 {dt.day}일 {weekday}"
+
 
 def parse_company_and_ticker(text):
     """
@@ -30,11 +50,17 @@ async def scrape_us_events():
         page = await context.new_page()
 
         await page.goto("https://investing.com/earnings-calendar/", wait_until="domcontentloaded")
-        await page.wait_for_selector("#timeFrame_yesterday", timeout=5000)
+        await page.wait_for_selector("#timeFrame_today", timeout=5000)
 
-        # 🔄 '어제' 버튼 클릭"
-        await page.click("#timeFrame_yesterday")
-        await page.wait_for_selector("td.theDay", timeout=7000)
+        # 🔄 '오늘' 버튼 클릭"
+        await page.click("#timeFrame_today")
+        # ✅ 'td.theDay'를 기다리는 부분에 try-except 적용
+        try:
+            await page.wait_for_selector("td.theDay", timeout=7000)
+        except TimeoutError:
+            # TimeoutError가 발생하면 이 블록이 실행
+            await browser.close()
+            return {} # 빈 딕셔너리를 반환하고 함수를 종료
 
         html = await page.content()
         await browser.close()
@@ -43,7 +69,7 @@ async def scrape_us_events():
     table = soup.find("table", id="earningsCalendarData")
 
     # 항목은 고정이니까 수동으로 기입
-    headers = ["회사", "주당순이익(EPS)", "주당순이익_예측", "매출(Revenue)", "매출_예축", "총 시가"]
+    headers = ["종목명", "주당순이익(EPS)", "주당순이익_예측", "매출(Revenue)", "매출_예축", "총 시가"]
     result_by_date = defaultdict(list)
     current_date = None
 
@@ -52,7 +78,8 @@ async def scrape_us_events():
         # ✅ 날짜 추출은 <tr> 내부의 <td>를 확인해야 함
         td = row.find("td", class_="theDay")
         if td:
-            current_date = td.get_text(strip=True)
+            raw_date = td.get_text(strip=True)
+            current_date = convert_to_korean_date(raw_date)
             continue
         
         # 이벤트 행: <td> 요소들만 있음. Class를 걸러낼 필요가없음

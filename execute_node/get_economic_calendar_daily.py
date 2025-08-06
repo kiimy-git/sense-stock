@@ -1,5 +1,5 @@
 import asyncio
-from playwright.async_api import async_playwright
+from playwright.async_api import async_playwright, TimeoutError
 from bs4 import BeautifulSoup
 import json
 from collections import defaultdict
@@ -23,7 +23,14 @@ async def scrape_us_events():
 
         # 🔄 '어제' 버튼 클릭"
         await page.click("#timeFrame_yesterday")
-        await page.wait_for_selector("td.theDay", timeout=7000)
+
+        # ✅ 'td.theDay'를 기다리는 부분에 try-except 적용
+        try:
+            await page.wait_for_selector("td.theDay", timeout=7000)
+        except TimeoutError:
+            # TimeoutError가 발생하면 이 블록이 실행
+            await browser.close()
+            return {} # 빈 딕셔너리를 반환하고 함수를 종료
 
         html = await page.content()
         await browser.close()
