@@ -43,4 +43,5 @@ async def extract_sector_data():
 # asyncio.run(extract_sector_data())
 if __name__ == "__main__":
     result = asyncio.run(extract_sector_data())
-    print(json.dumps(result, indent=2))
+
+    print(json.dumps(result, indent=2, ensure_ascii=False))
