@@ -29,7 +29,7 @@ async def extract_sector_data():
 
     data = []
     # 제외하고 싶은 컬럼 목록 정의
-    excluded_headers = ['No.', 'Change']
+    excluded_headers = ['No.']
 
     for row in table.select("tbody tr"):
         cols = row.select("td")
@@ -45,3 +45,4 @@ if __name__ == "__main__":
     result = asyncio.run(extract_sector_data())
 
     print(json.dumps(result, indent=2, ensure_ascii=False))
+
