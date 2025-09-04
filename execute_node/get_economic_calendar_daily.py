@@ -4,12 +4,14 @@ from bs4 import BeautifulSoup
 import json
 from collections import defaultdict
 
-# 중요도 ★ + (중요도 설명)
 def extract_star_rating_with_title(td):
+    '''
+    중요도 ★만 추출(예: ★☆☆, ★★☆, ★★★)
+    '''
     full = len(td.find_all("i", class_="grayFullBullishIcon"))
     stars = "★" * full + "☆" * (3 - full)
-    title = td.get("title", "").strip()
-    return f"{stars} ({title})" if title else stars
+    # title = td.get("title", "").strip() - (중요도 설명)
+    return stars
 
 
 async def scrape_us_events():
@@ -83,3 +85,4 @@ if __name__ == "__main__":
     # print(f"\n✅ 총 추출 이벤트 수: {len(events)}")
     # print(json.dumps(events, indent=2, ensure_ascii=False))
     print(json.dumps(events, indent=2, ensure_ascii=False))
+
