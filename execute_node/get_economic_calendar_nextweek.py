@@ -6,12 +6,12 @@ from collections import defaultdict
 
 def extract_star_rating_with_title(td):
     '''
-    중요도 ★ + (중요도 설명)
+    중요도 ★만 추출(예: ★☆☆, ★★☆, ★★★)
     '''
     full = len(td.find_all("i", class_="grayFullBullishIcon"))
     stars = "★" * full + "☆" * (3 - full)
-    title = td.get("title", "").strip()
-    return f"{stars} ({title})" if title else stars
+    # title = td.get("title", "").strip() - (중요도 설명)
+    return stars
 
 async def scroll_until_done(page, pause_time=1200, max_scrolls=60, stable_threshold=4):
     """
@@ -106,3 +106,4 @@ async def scrape_us_events():
 if __name__ == "__main__":
     events = asyncio.run(scrape_us_events())
     print(json.dumps(events, indent=2, ensure_ascii=False))
+
