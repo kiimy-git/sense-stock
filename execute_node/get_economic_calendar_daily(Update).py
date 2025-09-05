@@ -51,13 +51,19 @@ async def scrape_and_parse_tab(page, tab_selector):
         
         cols = row.select("td")
 
-        # '오늘' 탭(#timeFrame_today)일 경우, 08:00 이후 데이터는 무시하고 반복 중단
+        event_time = cols[0].get_text(strip=True)
+
+        # '오늘' 탭(#timeFrame_today)일 경우, 08:00를 초과하는 데이터는 무시하고 반복 중단
         if tab_selector == "#timeFrame_today":
-            event_time = cols[0].get_text(strip=True)
-            # 시간 문자열을 비교하여 08:00보다 크면 루프를 빠져나감
             if event_time > "08:00":
                 # print(f"✅ '오늘' 탭에서 08:00 이후 데이터({event_time})이므로 수집을 중단합니다.")
-                break 
+                break
+        
+        # '어제' 탭(#timeFrame_yesterday)일 경우, 08:00 이전 데이터는 건너뛰기 (중복 방지)
+        if tab_selector == "#timeFrame_yesterday":
+            if event_time <= "08:00":
+                # 이 시간대 데이터는 이전 실행 시 '오늘' 탭에서 이미 수집했으므로 건너뜁니다.
+                continue
 
         if len(cols) < len(headers):
             continue
@@ -103,4 +109,5 @@ if __name__ == "__main__":
     # 한국 시간 2025년 9월 4일 오전에 실행했다고 가정
     events = asyncio.run(scrape_us_events_combined())
     # print("\n✅ '어제'와 '오늘' 탭에서 수집된 모든 미국 이벤트:")
+
     print(json.dumps(events, indent=2, ensure_ascii=False))
