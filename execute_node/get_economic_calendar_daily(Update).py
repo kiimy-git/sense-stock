@@ -34,7 +34,7 @@ async def scrape_and_parse_tab(page, tab_selector):
     if not table:
         return defaultdict(list)
 
-    headers = ["시간", "외화", "중요성", "이벤트", "실제", "예측", "이전"]
+    headers = ["시간", "중요성", "이벤트", "실제", "예측", "이전"]
     result_by_date = defaultdict(list)
     current_date = None
 
@@ -111,3 +111,4 @@ if __name__ == "__main__":
     # print("\n✅ '어제'와 '오늘' 탭에서 수집된 모든 미국 이벤트:")
 
     print(json.dumps(events, indent=2, ensure_ascii=False))
+
