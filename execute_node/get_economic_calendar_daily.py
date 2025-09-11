@@ -41,7 +41,7 @@ async def scrape_us_events():
     table = soup.find("table", id="economicCalendarData")
 
     # 항목은 고정이니까 수동으로 기입
-    headers = ["시간", "외화", "중요성", "이벤트", "실제", "예측", "이전"]
+    headers = ["시간", "중요성", "이벤트", "실제", "예측", "이전"]
     result_by_date = defaultdict(list)
     current_date = None
 
@@ -85,4 +85,5 @@ if __name__ == "__main__":
     # print(f"\n✅ 총 추출 이벤트 수: {len(events)}")
     # print(json.dumps(events, indent=2, ensure_ascii=False))
     print(json.dumps(events, indent=2, ensure_ascii=False))
+
 
