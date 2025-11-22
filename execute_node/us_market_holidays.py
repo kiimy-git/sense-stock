@@ -7,6 +7,7 @@ def scrape_us_holiday_notice():
         page = browser.new_page()
 
         # 페이지 접속
+        ## 현재 사이트 휴장일 지원하지 않음 --------------> 변경 필요
         page.goto("https://m.hanwhawm.com:9090/M/main/oversea/main/OS001_1p.cmd")
 
         # table#_TBL_M 크롤링
@@ -31,3 +32,4 @@ if __name__ == "__main__":
 
     # JSON 문자열로 출력 (n8n의 ExecuteCommand 노드에서 stdout 파싱 가능)
     print(json.dumps(holidays, ensure_ascii=False, indent=2))
+
