@@ -50,10 +50,12 @@ async def scrape_us_events():
         page = await context.new_page()
 
         await page.goto("https://investing.com/earnings-calendar/", wait_until="domcontentloaded")
-        await page.wait_for_selector("#timeFrame_today", timeout=5000)
-
-        # 🔄 '오늘' 버튼 클릭"
-        await page.click("#timeFrame_today")
+        
+        # 1. 'Today'라는 텍스트를 가진 button 요소를 찾을 때까지 대기
+        await page.wait_for_selector("button:has-text('Today')", timeout=15000)
+        
+        # 2. 해당 버튼 클릭
+        await page.click("button:has-text('Today')")
         # ✅ 'td.theDay'를 기다리는 부분에 try-except 적용
         try:
             await page.wait_for_selector("td.theDay", timeout=7000)
