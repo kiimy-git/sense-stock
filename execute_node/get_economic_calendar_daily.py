@@ -4,85 +4,157 @@ from bs4 import BeautifulSoup
 import json
 from collections import defaultdict
 
-def extract_star_rating_with_title(td):
-    '''
-    중요도 ★만 추출(예: ★☆☆, ★★☆, ★★★)
-    '''
-    full = len(td.find_all("i", class_="grayFullBullishIcon"))
-    stars = "★" * full + "☆" * (3 - full)
-    # title = td.get("title", "").strip()
-    return stars
+def extract_star_rating_from_svg(cell):
+    """새로운 구조에서 SVG 투명도를 기준으로 별점을 추출합니다."""
+    svgs = cell.find_all("svg")
+    if not svgs:
+        return ""
+    full_stars = 0
+    for svg in svgs:
+        svg_class = svg.get("class", [])
+        if not any("opacity-20" in c for c in svg_class):
+            full_stars += 1
+    return "★" * full_stars + "☆" * (len(svgs) - full_stars)
 
+async def scroll_until_done(page, pause_time=1000, max_scrolls=100, stable_threshold=5):
+    """
+    스크롤을 내리다가 '더 보기' 버튼이 나타나면 클릭하며 
+    더 이상 데이터가 늘어나지 않을 때까지 끝까지 내려가는 로직
+    """
+    prev_count = 0
+    stable_rounds = 0
+
+    # 인베스팅닷컴의 '더 보기' 관련 예상 선택자 리스트 (텍스트 매칭 포함)
+    show_more_selector = "button:has-text('더 보기'), a:has-text('더 보기'), [class*='showMore'], [id*='showMore']"
+
+    for i in range(max_scrolls):
+        # 1. 휠을 조금씩 끊어서 스크롤 다운
+        for _ in range(3):
+            await page.mouse.wheel(0, 1500)
+            await page.wait_for_timeout(200)
+            
+        await page.wait_for_timeout(pause_time)
+
+        # ⚡ 2. '더 보기' 버튼이 노출되었는지 확인하고 있으면 클릭
+        try:
+            # 버튼이 화면에 존재하고 클릭 가능한 상태인지 체크
+            show_more_btn = page.locator(show_more_selector).first
+            if await show_more_btn.is_visible() and await show_more_btn.is_enabled():
+                print("🔘 '더 보기' 버튼 발견! 클릭합니다.")
+                await show_more_btn.click()
+                await page.wait_for_timeout(1500) # 버튼 클릭 후 로딩 시간 확보
+        except Exception:
+            pass # 버튼이 없는 스크롤 루프 회차는 그냥 통과
+
+        # 3. 현재까지 로드된 행 개수 측정
+        row_count = await page.evaluate("""
+            () => document.querySelectorAll("tbody[class*='datatable-v2_body'] tr[class*='datatable-v2_row']").length
+        """)
+        
+        print(f"🔄 스크롤 [{i+1}/{max_scrolls}] - 현재 로드된 전체 행 개수: {row_count}")
+
+        # 4. 데이터가 더 이상 늘어나지 않는지 체크 (종료 조건)
+        if row_count == prev_count:
+            stable_rounds += 1
+            if stable_rounds >= stable_threshold:
+                print("✅ 더 이상 새로운 데이터가 없습니다. 최종 스크롤을 종료합니다.")
+                break
+        else:
+            stable_rounds = 0
+
+        prev_count = row_count
 
 async def scrape_us_events():
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
-        context = await browser.new_context()
+        # 눈으로 더보기 클릭과 스크롤 진행 상황을 볼 수 있도록 설정
+        browser = await p.chromium.launch(headless=False, slow_mo=500)
+        context = await browser.new_context(
+            no_viewport=True,
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+        )
         page = await context.new_page()
 
+        print("🌐 인베스팅닷컴 접속 중...")
         await page.goto("https://kr.investing.com/economic-calendar/", wait_until="domcontentloaded")
-        # 1. 'Today'라는 텍스트를 가진 button 요소를 찾을 때까지 대기
-        await page.wait_for_selector("button:has-text('Yesterday')", timeout=15000)
+        await page.wait_for_timeout(3000)
         
-        # 2. 해당 버튼 클릭
-        await page.click("button:has-text('Yesterday')")
-
-        # ✅ 'td.theDay'를 기다리는 부분에 try-except 적용
+        # '오늘' 버튼 클릭
+        today_selector = "button:has(span:text('오늘'))"
+        await page.wait_for_selector(today_selector, timeout=15000)
+        await page.click(today_selector)
+        print("✅ '오늘' 버튼 클릭 완료.")
+        
         try:
-            await page.wait_for_selector("td.theDay", timeout=7000)
+            await page.wait_for_selector("tr[class*='datatable-v2_row']", timeout=15000)
         except TimeoutError:
-            # TimeoutError가 발생하면 이 블록이 실행
+            print("🚨 데이터를 로드하지 못했습니다.")
             await browser.close()
-            return {} # 빈 딕셔너리를 반환하고 함수를 종료
+            return {}
 
+        # 데이터 끝까지 스크롤 수행 (더보기 클릭 병행)
+        print("⏳ 데이터 스크롤 및 더보기 탐색 시작...")
+        await scroll_until_done(page, pause_time=1200)
+        
         html = await page.content()
         await browser.close()
 
+    # ==============================================================
+    # BeautifulSoup 파싱 및 미국 데이터 필터링 로직
+    # ==============================================================
     soup = BeautifulSoup(html, "html.parser")
-    table = soup.find("table", id="economicCalendarData")
+    tbody = soup.select_one("tbody[class*='datatable-v2_body']")
 
-    # 항목은 고정이니까 수동으로 기입
+    if not tbody:
+        print("🚨 테이블 본문을 찾지 못했습니다.")
+        return {}
+
     headers = ["시간", "외화", "중요성", "이벤트", "실제", "예측", "이전"]
     result_by_date = defaultdict(list)
     current_date = None
 
-    for row in table.select("tbody tr"):
-        
-        # ✅ 날짜 추출은 <tr> 내부의 <td>를 확인해야 함
-        td = row.find("td", class_="theDay")
-        if td:
-            current_date = td.get_text(strip=True)
+    for row in tbody.find_all("tr", class_="datatable-v2_row__hkEus"):
+        # 날짜 행 확인
+        date_div = row.find("div", class_="font-semibold")
+        if date_div and "년" in date_div.get_text():
+            current_date = date_div.get_text(strip=True)
             continue
 
-        # 이벤트 행: class="js-event-item", 이벤트가 아닌것들=날짜
-        if "js-event-item" not in row.get("class", []):
+        if not row.has_attr("id"):
             continue
-        
-        # ✅ 미국만 필터링
-        flag = row.select_one("span.ceFlags")
-        if not flag or "United_States" not in flag.get("class", []):
-            continue
-        
-        cols = row.select("td")
-        # 맨뒤 요소는 알림 생성 => X
-        values = [col.get_text(strip=True) for col in cols][:-1]
-        
-        # ✅ 중요성 td에서 별 + 설명 추출
-        importance_td = cols[2]
-        importance = extract_star_rating_with_title(importance_td)
-        values[2] = importance  # 세 번째 요소 교체
 
-        # 이벤트 row 처리
-        record = dict(zip(headers, values))
+        cells = row.find_all("td")
+        if len(cells) < 8:
+            continue
         
-        if current_date:
-            result_by_date[current_date].append(record)
-    
+        # 전체 데이터 중에서 오직 미국 데이터만 필터링하여 수집
+        us_flag = row.find(attrs={"data-test": "flag-US"})
+        if not us_flag:
+            continue
+        
+        try:
+            time = cells[1].get_text(strip=True)
+            currency = cells[2].get_text(strip=True)
+            event_name = cells[3].get_text(strip=True)
+            importance = extract_star_rating_from_svg(cells[4])
+            actual = cells[5].get_text(strip=True)
+            forecast = cells[6].get_text(strip=True)
+            previous = cells[7].get_text(strip=True)
+
+            actual = actual if actual else "-"
+            forecast = forecast if forecast else "-"
+            previous = previous if previous else "-"
+
+            record = dict(zip(headers, [time, currency, importance, event_name, actual, forecast, previous]))
+            
+            if current_date:
+                result_by_date[current_date].append(record)
+                
+        except IndexError:
+            continue
+
     return result_by_date
 
-# 테스트
 if __name__ == "__main__":
     events = asyncio.run(scrape_us_events())
-    # print(f"\n✅ 총 추출 이벤트 수: {len(events)}")
-    # print(json.dumps(events, indent=2, ensure_ascii=False))
+    print("\n🎉 전체 데이터 수집 및 미국 필터링 파싱 완료!")
     print(json.dumps(events, indent=2, ensure_ascii=False))
