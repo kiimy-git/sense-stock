@@ -86,7 +86,7 @@ async def scrape_us_events_combined():
         
         # '어제' 탭 데이터 스크래핑
         
-        yesterday_events = await scrape_and_parse_tab(page, "#button:has-text('Yesterday')")
+        yesterday_events = await scrape_and_parse_tab(page, "button:has-text('Yesterday')")
         
         # '오늘' 탭 데이터 스크래핑
         today_events = await scrape_and_parse_tab(page, "button:has-text('Today')")
