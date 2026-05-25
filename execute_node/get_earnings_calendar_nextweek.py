@@ -89,10 +89,11 @@ async def scrape_us_events():
         page = await context.new_page()
 
         await page.goto("https://investing.com/earnings-calendar/", wait_until="domcontentloaded")
-        await page.wait_for_selector("#timeFrame_nextWeek", timeout=5000)
-
-        # 🔄 '이번 주' 버튼 클릭"
-        await page.click("#timeFrame_nextWeek")
+        # 1. 'Today'라는 텍스트를 가진 button 요소를 찾을 때까지 대기
+        await page.wait_for_selector("button:has-text('Next Week')", timeout=15000)
+        
+        # 2. 해당 버튼 클릭
+        await page.click("button:has-text('Next Week')")
         await page.wait_for_selector("td.theDay", timeout=7000)
         
         # ✅ 페이지 끝까지 스크롤해서 전체 데이터 로딩
@@ -105,7 +106,7 @@ async def scrape_us_events():
     table = soup.find("table", id="earningsCalendarData")
 
     # 항목은 고정이니까 수동으로 기입
-    headers = ["종목명", "주당순이익(EPS)", "주당순이익_예측", "매출(Revenue)", "매출_예축", "총 시가"]
+    headers = ["종목명", "주당순이익(EPS)", "주당순이익_예측", "매출(Revenue)", "매출_예측", "총 시가"]
     result_by_date = defaultdict(list)
     current_date = None
 

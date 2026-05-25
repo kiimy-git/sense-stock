@@ -10,7 +10,7 @@ def extract_star_rating_with_title(td):
     '''
     full = len(td.find_all("i", class_="grayFullBullishIcon"))
     stars = "★" * full + "☆" * (3 - full)
-    # title = td.get("title", "").strip() - (중요도 설명)
+    # title = td.get("title", "").strip()
     return stars
 
 
@@ -21,10 +21,11 @@ async def scrape_us_events():
         page = await context.new_page()
 
         await page.goto("https://kr.investing.com/economic-calendar/", wait_until="domcontentloaded")
-        await page.wait_for_selector("#timeFrame_yesterday", timeout=5000)
-
-        # 🔄 '어제' 버튼 클릭"
-        await page.click("#timeFrame_yesterday")
+        # 1. 'Today'라는 텍스트를 가진 button 요소를 찾을 때까지 대기
+        await page.wait_for_selector("button:has-text('Yesterday')", timeout=15000)
+        
+        # 2. 해당 버튼 클릭
+        await page.click("button:has-text('Yesterday')")
 
         # ✅ 'td.theDay'를 기다리는 부분에 try-except 적용
         try:
@@ -41,7 +42,7 @@ async def scrape_us_events():
     table = soup.find("table", id="economicCalendarData")
 
     # 항목은 고정이니까 수동으로 기입
-    headers = ["시간", "중요성", "이벤트", "실제", "예측", "이전"]
+    headers = ["시간", "외화", "중요성", "이벤트", "실제", "예측", "이전"]
     result_by_date = defaultdict(list)
     current_date = None
 
@@ -85,5 +86,3 @@ if __name__ == "__main__":
     # print(f"\n✅ 총 추출 이벤트 수: {len(events)}")
     # print(json.dumps(events, indent=2, ensure_ascii=False))
     print(json.dumps(events, indent=2, ensure_ascii=False))
-
-

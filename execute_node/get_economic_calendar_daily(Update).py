@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import json
 from collections import defaultdict
 
-# 별점만 추출하는 함수 (이전과 동일)
+# 별점만 추출하는 함수
 def extract_star_rating(td):
     '''
     중요도 ★만 추출(예: ★☆☆, ★★☆, ★★★)
@@ -18,6 +18,7 @@ async def scrape_and_parse_tab(page, tab_selector):
     주어진 tab_selector를 클릭하고 해당 탭의 데이터를 파싱하여 반환하는 함수
     """
     # print(f"🔄 {tab_selector} 탭을 클릭하고 데이터를 스크래핑합니다...")
+    await page.wait_for_selector(tab_selector, timeout=5000)
     await page.click(tab_selector)
     
     try:
@@ -34,7 +35,7 @@ async def scrape_and_parse_tab(page, tab_selector):
     if not table:
         return defaultdict(list)
 
-    headers = ["시간", "중요성", "이벤트", "실제", "예측", "이전"]
+    headers = ["시간", "외화", "중요성", "이벤트", "실제", "예측", "이전"]
     result_by_date = defaultdict(list)
     current_date = None
 
@@ -51,19 +52,13 @@ async def scrape_and_parse_tab(page, tab_selector):
         
         cols = row.select("td")
 
-        event_time = cols[0].get_text(strip=True)
-
-        # '오늘' 탭(#timeFrame_today)일 경우, 08:00를 초과하는 데이터는 무시하고 반복 중단
+        # '오늘' 탭(#timeFrame_today)일 경우, 08:00 이후 데이터는 무시하고 반복 중단
         if tab_selector == "#timeFrame_today":
+            event_time = cols[0].get_text(strip=True)
+            # 시간 문자열을 비교하여 08:00보다 크면 루프를 빠져나감
             if event_time > "08:00":
                 # print(f"✅ '오늘' 탭에서 08:00 이후 데이터({event_time})이므로 수집을 중단합니다.")
-                break
-        
-        # '어제' 탭(#timeFrame_yesterday)일 경우, 08:00 이전 데이터는 건너뛰기 (중복 방지)
-        if tab_selector == "#timeFrame_yesterday":
-            if event_time <= "08:00":
-                # 이 시간대 데이터는 이전 실행 시 '오늘' 탭에서 이미 수집했으므로 건너뜁니다.
-                continue
+                break 
 
         if len(cols) < len(headers):
             continue
@@ -90,10 +85,11 @@ async def scrape_us_events_combined():
         await page.goto("https://kr.investing.com/economic-calendar/", wait_until="domcontentloaded")
         
         # '어제' 탭 데이터 스크래핑
-        yesterday_events = await scrape_and_parse_tab(page, "#timeFrame_yesterday")
+        
+        yesterday_events = await scrape_and_parse_tab(page, "#button:has-text('Yesterday')")
         
         # '오늘' 탭 데이터 스크래핑
-        today_events = await scrape_and_parse_tab(page, "#timeFrame_today")
+        today_events = await scrape_and_parse_tab(page, "button:has-text('Today')")
 
         await browser.close()
 
@@ -109,6 +105,4 @@ if __name__ == "__main__":
     # 한국 시간 2025년 9월 4일 오전에 실행했다고 가정
     events = asyncio.run(scrape_us_events_combined())
     # print("\n✅ '어제'와 '오늘' 탭에서 수집된 모든 미국 이벤트:")
-
     print(json.dumps(events, indent=2, ensure_ascii=False))
-
